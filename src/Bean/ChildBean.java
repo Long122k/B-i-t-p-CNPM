@@ -7,7 +7,7 @@ package Bean;
 
 import java.util.ArrayList;
 import java.util.List;
-import models.ChildModel;
+import model.ChildModel;
 import models.GiftModel;
 
 /**
