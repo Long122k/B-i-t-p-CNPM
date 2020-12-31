@@ -24,7 +24,7 @@ public class DelController {
     KiemTraQua ktq;
     XoaBang xb;
     public ArrayList<ChildModel> getList() throws SQLException, ClassNotFoundException{
-        Connection connection = MysqlConnection.getMysqlConnection();
+            Connection connection = MysqlConnection.getMysqlConnection();
             String query = "SELECT * FROM child" ;
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
@@ -54,8 +54,16 @@ public class DelController {
             }
         return list;
     }
-    public boolean delChild(ChildModel t){
-        
+    public boolean delChild(int ID) throws SQLException, ClassNotFoundException{
+       
+        String query = "DELETE FROM child WHERE ID = " + ID;
+      try {
+                Connection connection = MysqlConnection.getMysqlConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                int rs = preparedStatement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         return true;
     }
     int i=1;

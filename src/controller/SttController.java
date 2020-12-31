@@ -55,8 +55,20 @@ public class SttController {
             }
         return list;
     }
-    public boolean changeChild(ChildModel t){
-        
+    public boolean changeChild(int ID,ChildModel t,boolean kt){
+        String query;
+        if (kt){
+         query = "UPDATE child SET daNhanQua = 'chưa nhận' WHERE ID = " + ID;}
+        else{
+         query = "UPDATE child SET daNhanQua = 'đã nhận' WHERE ID = " + ID;
+        }
+      try {
+                Connection connection = MysqlConnection.getMysqlConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                int rs = preparedStatement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         return true;
     }
     int i=1;

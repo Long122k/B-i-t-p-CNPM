@@ -102,13 +102,13 @@ public class Del extends javax.swing.JPanel {
 
     private void BtnClrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClrActionPerformed
         // TODO add your handling code here:
-        int  change = DelTb.getSelectedRow();
-        if (change == -1) 
+        int  del = DelTb.getSelectedRow();
+        if (del == -1) 
         { JOptionPane.showMessageDialog(null,"Chọn 1 dòng để nhấn");}
          else if (JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn Xóa ?","Comfirm",JOptionPane.YES_NO_OPTION) == 0) {
             controller = new DelController();
             try {
-                if (controller.delChild(list.get(change))) {
+                if (controller.delChild(list.get(del).getID())) {
                     JOptionPane.showMessageDialog(null, "Xóa thành công!!");                    
                 }
             } catch (Exception e) {
@@ -122,6 +122,7 @@ public class Del extends javax.swing.JPanel {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Del.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             controller.CreatAll(list, model);}
     }//GEN-LAST:event_BtnClrActionPerformed
     

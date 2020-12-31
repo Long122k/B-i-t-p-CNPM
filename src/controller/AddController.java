@@ -20,9 +20,9 @@ import services.MysqlConnection;
 public class AddController {
     public boolean addChild(ChildModel t) throws SQLException, ClassNotFoundException{
         try (Connection connection = MysqlConnection.getMysqlConnection()) {
-            String query = "INSERT INTO child (ID, tenTre, ngaySinh, tenChuHo, lop, truong, thanhTich, gioiTinh, diaChi, daNhanQua,ngayNhanQua,loaiQUa,soLuongQua)"
+            String query = "INSERT INTO child (ID, tenTre, ngaySinh, tenChuHo, lop, truong, thanhTich, gioiTinh, diaChi, daNhanQua, ngayNhanQua, loaiQUa, soLuongQua)"
                     + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, t.getID());
                 preparedStatement.setString(2, t.getTenTre());
                 
@@ -40,9 +40,10 @@ public class AddController {
                 preparedStatement.setString(12, t.getLoaiQua());
                 preparedStatement.setInt(13, t.getSoLuongQua());
                 preparedStatement.executeUpdate();
+                preparedStatement.close();
                 connection.close();
             }
         }
-    return false;
+    return true;
     }
 }

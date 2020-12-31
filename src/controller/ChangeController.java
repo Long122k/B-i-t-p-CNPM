@@ -8,6 +8,7 @@ package controller;
 import Service.KiemTraQua;
 import Service.XoaBang;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,8 +55,40 @@ public class ChangeController {
             }
         return list;
     }
-    public boolean changeChild(ChildModel t){
-        
+    public boolean changeChild(int ID,ChildModel t) throws SQLException, ClassNotFoundException{
+         String query = "DELETE FROM child WHERE ID = " + ID;
+      try {
+                Connection connection = MysqlConnection.getMysqlConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                int rs = preparedStatement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+      try (Connection connection = MysqlConnection.getMysqlConnection()) {
+            String query1 = "INSERT INTO child (ID, tenTre, ngaySinh, tenChuHo, lop, truong, thanhTich, gioiTinh, diaChi, daNhanQua, ngayNhanQua, loaiQUa, soLuongQua)"
+                    + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query1)) {
+                preparedStatement.setInt(1, t.getID());
+                preparedStatement.setString(2, t.getTenTre());
+                
+                preparedStatement.setDate(3, new Date( t.getNgaySinh().getTime()));
+                preparedStatement.setString(4, t.getTenChuHo());
+                preparedStatement.setString(5, t.getLop());
+                preparedStatement.setString(6, t.getTruong());
+                preparedStatement.setString(7, t.getThanhTich());
+                preparedStatement.setString(8, t.getGioiTinh());
+                preparedStatement.setString(9, t.getDiaChi());
+                
+                String kt = new KiemTraQua().giftcheck(t.isDaNhanQua());
+                preparedStatement.setString(10, kt);
+                preparedStatement.setDate(11, new Date( t.getNgayNhanQua().getTime()));
+                preparedStatement.setString(12, t.getLoaiQua());
+                preparedStatement.setInt(13, t.getSoLuongQua());
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+                connection.close();
+            }
+        }
         return true;
     }
     int i=1;

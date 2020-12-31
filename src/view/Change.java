@@ -8,6 +8,8 @@ package view;
 
 import javax.swing.table.DefaultTableModel;
 import controller.ChangeController;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +29,7 @@ public class Change extends javax.swing.JPanel {
     public Change() throws SQLException, ClassNotFoundException {
         initComponents();
         model = (DefaultTableModel) ChangeTb.getModel();
-        model.setColumnIdentifiers(new Object[]{"STT","ID","Tên trẻ","Ngày sinh","Giới tính","Phụ huynh","Địa chỉ","Trường","Lớp","Học lực","Quà dịp này"});
+        model.setColumnIdentifiers(new Object[]{"STT","ID","Tên trẻ","Ngày sinh","Giới tính","Phụ huynh","Địa chỉ","Trường","Lớp","Học lực","Trạng thái"});
         list = new ChangeController().getList();
         controller = new ChangeController();
         controller.CreatAll(list, model);
@@ -243,20 +245,35 @@ public class Change extends javax.swing.JPanel {
             t.setTruong(txtSchool.getText());
             t.setLop(txtClass.getText());
             t.setThanhTich((String) CbRate.getSelectedItem());
-            if(t.getThanhTich().equals("Giỏi")){
+            if(t.getThanhTich().equals("giỏi")){
                 t.setSoLuongQua(8);
             }
-            else if(t.getThanhTich().equals("Khá")){
+            else if(t.getThanhTich().equals("khá")){
                 t.setSoLuongQua(5);
+            }try {
+                t.setNgayNhanQua(new SimpleDateFormat("dd/MM/yyyy").parse(txtDoB.getText()));
+            } catch (ParseException ex) {
+                java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
+            t.setLoaiQua("vở");
+            controller = new ChangeController();
             try {
-                if (controller.changeChild(t)) {
+                if (controller.changeChild(list.get(change).getID(),t)) {
                     JOptionPane.showMessageDialog(null, "Thay đổi  thành công!!");                    
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(null, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
+                try {
+                    list = new ChangeController().getList();
+                } catch (SQLException ex) {
+                    java.util.logging.Logger.getLogger(Change.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    java.util.logging.Logger.getLogger(Change.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+            controller.CreatAll(list, model);
+            
         }
         }       
     }//GEN-LAST:event_BtnChgActionPerformed

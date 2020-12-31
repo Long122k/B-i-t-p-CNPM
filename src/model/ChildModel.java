@@ -6,6 +6,7 @@
 
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,6 +14,7 @@ import java.util.Date;
  * @author Microsoft Windows
  */
 public class ChildModel {
+    
 
     private int ID;
     private String tenTre;

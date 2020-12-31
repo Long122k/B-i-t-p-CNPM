@@ -139,7 +139,7 @@ SttController controller;
          else if (JOptionPane.showConfirmDialog(null, "Bạn có chắc thay đổi trạng thái tặng quà ?","Comfirm",JOptionPane.YES_NO_OPTION) == 0) {
              controller = new SttController();
             try {
-                if (controller.changeChild(list.get(change))) {
+                if (controller.changeChild(list.get(change).getID(),list.get(change),list.get(change).isDaNhanQua())) {
                     JOptionPane.showMessageDialog(null, "Thay đổi thành công!!");                    
                 }
             } catch (Exception e) {

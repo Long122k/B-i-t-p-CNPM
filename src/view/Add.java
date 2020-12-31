@@ -239,6 +239,12 @@ private AddController controller = new AddController();
                 t.setSoLuongQua(5);
             }
             try {
+                t.setNgayNhanQua(new SimpleDateFormat("dd/MM/yyyy").parse(txtDoB.getText()));
+            } catch (ParseException ex) {
+                Logger.getLogger(Add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            t.setLoaiQua("vở");
+            try {
                 if (this.controller.addChild(t)) {
                     JOptionPane.showMessageDialog(null, "Thêm thành công!!");                    
                 }
