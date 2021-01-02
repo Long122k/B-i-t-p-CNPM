@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import controller.LoginController;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
 /**
  *
  * @author Microsoft Windows
@@ -33,32 +35,40 @@ private LoginController cont = new  LoginController();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        prsPanel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        prsPanel1 = new javax.swing.JPanel();
-        BtnCfr = new javax.swing.JButton();
-        BtnCfr1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         txbPasswd = new javax.swing.JPasswordField();
+        BtnCfr1 = new javax.swing.JButton();
+        BtnCfr = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        prsPanel.setBackground(new java.awt.Color(51, 102, 255));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel2.setText("Tên đăng nhập:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(350, 130, 106, 19);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 153, 51));
-        jLabel4.setText("Đăng Nhập:");
-
-        prsPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        BtnCfr.setText("Làm mới");
-        BtnCfr.addActionListener(new java.awt.event.ActionListener() {
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCfrActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtName);
+        txtName.setBounds(460, 130, 268, 30);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel3.setText("Mật khẩu:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(370, 190, 66, 19);
+
+        txbPasswd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txbPasswd.setName("txtPasswd"); // NOI18N
+        getContentPane().add(txbPasswd);
+        txbPasswd.setBounds(460, 180, 268, 30);
 
         BtnCfr1.setText("Xác nhận");
         BtnCfr1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,96 +76,28 @@ private LoginController cont = new  LoginController();
                 BtnCfr1ActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnCfr1);
+        BtnCfr1.setBounds(610, 250, 100, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel3.setText("Mật khẩu:");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel2.setText("Tên đăng nhập:");
-
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        BtnCfr.setText("Làm mới");
+        BtnCfr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+                BtnCfrActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnCfr);
+        BtnCfr.setBounds(480, 250, 90, 30);
 
-        txbPasswd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txbPasswd.setName("txtPasswd"); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel4.setText("Đăng Nhập");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(580, 30, 134, 28);
 
-        javax.swing.GroupLayout prsPanel1Layout = new javax.swing.GroupLayout(prsPanel1);
-        prsPanel1.setLayout(prsPanel1Layout);
-        prsPanel1Layout.setHorizontalGroup(
-            prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(prsPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(prsPanel1Layout.createSequentialGroup()
-                        .addComponent(BtnCfr1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
-                        .addComponent(BtnCfr)
-                        .addGap(72, 72, 72))
-                    .addGroup(prsPanel1Layout.createSequentialGroup()
-                        .addGroup(prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                            .addComponent(txbPasswd))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        prsPanel1Layout.setVerticalGroup(
-            prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, prsPanel1Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txbPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(prsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCfr)
-                    .addComponent(BtnCfr1))
-                .addGap(26, 26, 26))
-        );
-
-        javax.swing.GroupLayout prsPanelLayout = new javax.swing.GroupLayout(prsPanel);
-        prsPanel.setLayout(prsPanelLayout);
-        prsPanelLayout.setHorizontalGroup(
-            prsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(prsPanelLayout.createSequentialGroup()
-                .addGroup(prsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(prsPanelLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel4))
-                    .addGroup(prsPanelLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(prsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
-        );
-        prsPanelLayout.setVerticalGroup(
-            prsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(prsPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(prsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(prsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(prsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/giftImage.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 740, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,11 +178,10 @@ private LoginController cont = new  LoginController();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCfr;
     private javax.swing.JButton BtnCfr1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel prsPanel;
-    private javax.swing.JPanel prsPanel1;
     private javax.swing.JPasswordField txbPasswd;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
