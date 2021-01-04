@@ -22,6 +22,8 @@ private LoginController cont = new  LoginController();
      */
     public Login() {
         initComponents();
+        setSize(760,430);
+        setResizable(false);
         setTitle("Đăng Nhập");
         setLocationRelativeTo(null);
     }

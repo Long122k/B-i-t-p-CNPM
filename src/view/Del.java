@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.ChildModel;
 
@@ -29,6 +30,14 @@ public class Del extends javax.swing.JPanel {
         initComponents();
         model = (DefaultTableModel) DelTb.getModel();
         model.setColumnIdentifiers(new Object[]{"STT","ID","Tên trẻ","Ngày sinh","Giới tính","Phụ huynh","Địa chỉ","Trường","Lớp","Học lực","Trạng thái"});
+        DelTb.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        DelTb.getColumnModel().getColumn(0).setPreferredWidth(40);
+        DelTb.getColumnModel().getColumn(1).setPreferredWidth(35);
+        DelTb.getColumnModel().getColumn(2).setPreferredWidth(100);
+        DelTb.getColumnModel().getColumn(5).setPreferredWidth(130);
+        DelTb.getColumnModel().getColumn(6).setPreferredWidth(300);
+        DelTb.getColumnModel().getColumn(7).setPreferredWidth(100);
+        DelTb.getColumnModel().getColumn(8).setPreferredWidth(40);
         list = new DelController().getList();
         controller = new DelController();
         controller.CreatAll(list, model);
@@ -78,14 +87,14 @@ public class Del extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jLabel1)
                         .addGap(66, 66, 66)
-                        .addComponent(BtnClr)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addComponent(BtnClr))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1022, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,8 +104,8 @@ public class Del extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(BtnClr))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

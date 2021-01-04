@@ -95,7 +95,7 @@ public class SttController {
         xb.clear(model);
         list.forEach(t-> {
             ktq =new KiemTraQua();
-            if(!t.isDaNhanQua()){
+            if(t.isDaNhanQua()){
                 model.addRow(new Object[]{i++,t.getID(),t.getTenTre(),t.getNgaySinh(),t.getGioiTinh(),t.getTenChuHo(),t.getDiaChi(),t.getTruong(),t.getLop(),t.getThanhTich(),ktq.giftcheck(t.isDaNhanQua())});
             }
         });

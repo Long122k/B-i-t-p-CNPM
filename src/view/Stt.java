@@ -28,6 +28,14 @@ SttController controller;
         initComponents();
         model = (DefaultTableModel) SttTb.getModel();
         model.setColumnIdentifiers(new Object[]{"STT","Id","Tên trẻ","Ngày sinh","Giới tính","Phụ huynh","Địa chỉ","Trường","Lớp","Học lực","Trạng thái"});
+        SttTb.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        SttTb.getColumnModel().getColumn(0).setPreferredWidth(40);
+        SttTb.getColumnModel().getColumn(1).setPreferredWidth(40);
+        SttTb.getColumnModel().getColumn(2).setPreferredWidth(100);
+        SttTb.getColumnModel().getColumn(5).setPreferredWidth(130);
+        SttTb.getColumnModel().getColumn(6).setPreferredWidth(300);
+        SttTb.getColumnModel().getColumn(7).setPreferredWidth(105);
+        SttTb.getColumnModel().getColumn(8).setPreferredWidth(40);
         list = new SttController().getList();
         controller = new SttController();
         controller.CreatAll(list, model);
@@ -46,7 +54,6 @@ SttController controller;
         jScrollPane1 = new javax.swing.JScrollPane();
         SttTb = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
-        UndoBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,6 +69,17 @@ SttController controller;
 
             }
         ));
+        SttTb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SttTbMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SttTbMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                SttTbMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(SttTb);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa tặng", "Đã tặng" }));
@@ -71,30 +89,20 @@ SttController controller;
             }
         });
 
-        UndoBtn.setText("Thay đổi");
-        UndoBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UndoBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UndoBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,11 +110,10 @@ SttController controller;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UndoBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,7 +138,16 @@ SttController controller;
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void UndoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoBtnActionPerformed
+    private void SttTbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SttTbMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SttTbMousePressed
+
+    private void SttTbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SttTbMouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_SttTbMouseEntered
+
+    private void SttTbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SttTbMouseClicked
         // TODO add your handling code here:
         int  change = SttTb.getSelectedRow();
         if (change == -1) 
@@ -163,12 +179,11 @@ SttController controller;
             controller.CreatGift(list, model);
             }
         }
-    }//GEN-LAST:event_UndoBtnActionPerformed
+    }//GEN-LAST:event_SttTbMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable SttTb;
-    private javax.swing.JButton UndoBtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
